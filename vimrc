@@ -1,8 +1,8 @@
 set nocompatible                        " be iMproved, required
 
 filetype off                            " required
-set rtp+=C:/Users/Zyx/vimfiles/bundle/Vundle.vim
-call vundle#begin('C:/Users/Zyx/vimfiles/bundle/Vundle.vim')
+set rtp+=PATH~TO~VUNDLE.VIM
+call vundle#begin(PATH~TO~VUNDLE.VIM)
 Plugin 'VundleVim/Vundle.vim'           " Standart vundle plugin
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-fugitive'             " Standart vundle plugin
@@ -45,7 +45,7 @@ set smartindent                         " enable smart indents, for example inde
 set showmatch                           " show match of {} ()...
 set backspace=indent,eol,start          " enable backspace work
 
-let s:PathToExecutable = 'C:\Python38'
+let s:PathToExecutable = PATH~TO~PYTHON~COMPILATOR
 
 "Test section
 set ttyfast
