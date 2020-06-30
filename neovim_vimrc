@@ -1,0 +1,99 @@
+syntax on
+
+
+call plug#begin('C:\Users\Zyx\AppData\Local\nvim\plugged')
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'morhetz/gruvbox', {'on': 'gruvbox'}
+Plug 'tell-k/vim-autopep8'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'jiangmiao/auto-pairs'
+Plug 'pangloss/vim-javascript'
+Plug 'sbdchd/neoformat'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'neomake/neomake'
+Plug 'prettier/vim-prettier'
+Plug 'itchyny/lightline.vim'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neovim/pynvim'
+call plug#end()
+
+set laststatus=2
+packloadall
+set t_Co=256                            " 256 colors
+set nowrap                              " don't wrap lines
+set shortmess+=I                        " hide the launch screen
+set clipboard=unnamed                   " normal OS clipboard interaction
+set autoread                            " automatically reload files changed outside of Vim
+set mousehide                           " hide mouse when typing
+set mouse=a                             " enable mouse support 
+set nu                                  " numbers of lines in left side
+set relativenumber                      " make numbers relative
+set lz                                  " lazy render in macros work time
+set hlsearch                            " search result highlight
+set showcmd                             " show incomplete cmds in the status bar
+set hidden                              " hide menu in gui mode
+set smartindent                         " enable smart indents, for example indent after }
+set showmatch                           " show match of {} ()...
+set backspace=indent,eol,start          " enable backspace work
+set visualbell t_vb=                    " disable sound in vim
+set guifont=Hack:h14                    " font for gui variation
+
+set bg=dark                             " dark theme for gruvbox
+colorscheme gruvbox
+
+" Disable backup and swap files
+set nobackup
+set nowritebackup
+set noswapfile
+
+" smart search
+set ignorecase
+set smartcase
+
+" Tabs
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set softtabstop=4
+set autoindent
+
+
+"Enter for new line under cursor
+nmap <CR> o<Esc>
+"Shift+Enter for new line before cursor
+nmap <S-Enter> O<Esc>
+map <C-n> :NERDTreeToggle<CR>
+"Stop search highlight with esc
+nnoremap <esc> :noh<return><esc>   
+noremap <F3> :Autoformat<CR>
+
+
+"""""""""""""""""""""""""
+""""    deoplete     """"
+"""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
+let g:python3_host_prog = 'C:\Python38\python.exe'
+"""""""""""""""""""""""""
+""""  Java Complete  """"
+"""""""""""""""""""""""""
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+"""""""""""""""""""""""""
+""""     neomake     """"
+"""""""""""""""""""""""""
+autocmd! BufWritePost,BufEnter * Neomake
+
+"""""""""""""""""""""""""
+""""     neoformat   """"
+"""""""""""""""""""""""""
+augroup astyle
+  autocmd!
+  autocmd BufWritePre * Neoformat
+augroup END
